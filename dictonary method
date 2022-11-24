@@ -1,0 +1,21 @@
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        f1={}
+        for i in nums1:
+            if i not in f1:
+                f1[i]=1
+            else:
+                f1[i]+=1
+        f2={}
+        for i in nums2:
+            if i not in f2:
+                f2[i]=1
+            else:
+                f2[i]+=1
+        ans=[]
+        for i in range(len(nums1)):
+            val=nums1[i]
+            if val in f2 and f2[val]>0:
+                ans.append(val)
+                f2[val]-=1
+        return ans
